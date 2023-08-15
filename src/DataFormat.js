@@ -10,7 +10,8 @@ const DataFormat = {
     SB2: 'sb2',
     SB3: 'sb3',
     SVG: 'svg',
-    WAV: 'wav'
+    WAV: 'wav',
+    TTF: 'ttf'
 };
 
 module.exports = DataFormat;
