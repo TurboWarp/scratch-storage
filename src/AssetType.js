@@ -42,7 +42,7 @@ const AssetType = {
         immutable: true
     },
     Font: {
-        contentType: 'application/x-font-ttf',
+        contentType: 'font/ttf',
         name: 'Font',
         runtimeFormat: DataFormat.TTF,
         immutable: true
