@@ -1,7 +1,8 @@
-/* eslint-env browser */
 /* eslint-disable no-use-before-define */
 
-// This throttles and retries fetch() to mitigate the effect of random network errors and
+const {scratchFetch} = require('./scratchFetch');
+
+// This throttles and retries scratchFetch() to mitigate the effect of random network errors and
 // random browser errors (especially in Chrome)
 
 let currentFetches = 0;
@@ -11,19 +12,11 @@ const startNextFetch = ([resolve, url, options]) => {
     let firstError;
     let failedAttempts = 0;
 
-    const attemptToFetch = () => fetch(url, options)
+    const attemptToFetch = () => scratchFetch(url, options)
         .then(result => {
-            // In a macOS WKWebView, requests from file: URLs to other file: URLs always have status: 0 and ok: false
-            // even though the requests were successful. If the requested file doesn't exist, fetch() rejects instead.
-            // We aren't aware of any other cases where fetch() can resolve with status 0, so this should be safe.
-            if (result.ok || result.status === 0) return result.arrayBuffer();
-            if (result.status === 404) return null;
-            return Promise.reject(result.status);
-        })
-        .then(buffer => {
             currentFetches--;
             checkStartNextFetch();
-            return buffer;
+            return result;
         })
         .catch(error => {
             if (error === 403) {
@@ -57,9 +50,9 @@ const checkStartNextFetch = () => {
     }
 };
 
-const saferFetchAsArrayBuffer = (url, options) => new Promise(resolve => {
+const saferFetch = (url, options) => new Promise(resolve => {
     queue.push([resolve, url, options]);
     checkStartNextFetch();
 });
 
-module.exports = saferFetchAsArrayBuffer;
+module.exports = saferFetch;

@@ -1,7 +1,11 @@
+Fork of scratch-storage used by TurboWarp.
+
+<!--
 ## scratch-storage
 #### Scratch Storage is a library for loading and storing project and asset files for Scratch 3.0
 
-[![Build Status](https://travis-ci.org/LLK/scratch-storage.svg?branch=develop)](https://travis-ci.org/LLK/scratch-storage)
+[![CircleCI](https://circleci.com/gh/LLK/scratch-storage/tree/develop.svg?style=shield&circle-token=171bbb6a82280e98afbfcedd8aa90b95b13b5de3)](https://circleci.com/gh/LLK/scratch-storage?branch=develop)
+
 [![Coverage Status](https://coveralls.io/repos/github/LLK/scratch-storage/badge.svg?branch=develop)](https://coveralls.io/github/LLK/scratch-storage?branch=develop)
 [![Greenkeeper badge](https://badges.greenkeeper.io/LLK/scratch-storage.svg)](https://greenkeeper.io/)
 
@@ -151,3 +155,5 @@ and will not break the build unexpectedly.
 We provide [Scratch](https://scratch.mit.edu) free of charge, and want to keep it that way! Please consider making a
 [donation](https://secure.donationpay.org/scratchfoundation/) to support our continued engineering, design, community,
 and resource development efforts. Donations of any size are appreciated. Thank you!
+
+-->
