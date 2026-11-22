@@ -1,4 +1,7 @@
-const md5 = require('js-md5');
+const crypto = require('crypto');
+
+const md5 = data => crypto.createHash('md5').update(data)
+    .digest('hex');
 
 const ScratchStorage = require('../../src/index.js');
 

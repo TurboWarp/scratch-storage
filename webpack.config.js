@@ -63,7 +63,6 @@ module.exports = [
         },
         externals: {
             'base64-js': true,
-            'js-md5': true,
             'localforage': true,
             'text-encoding': true
         }
