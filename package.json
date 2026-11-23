@@ -13,16 +13,11 @@
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "webpack --progress --colors --bail",
-    "coverage": "tap ./test/{unit,integration}/*.js --coverage --coverage-report=lcov",
-    "test": "npm run test:lint && jest \"test[\\\\/](unit|integration)\"",
-    "test:clearCache": "jest --clearCache",
+    "test": "npm run test:lint && npm run test:unit && npm run test:integration",
     "test:lint": "eslint .",
-    "test:integration": "jest \"test[\\\\/]integration\"",
-    "test:unit": "jest \"test[\\\\/]unit\"",
+    "test:integration": "node --require ./test/setup.js --test \"test/integration/*.test.js\"",
+    "test:unit": "node --require ./test/setup.js --test \"test/unit/*.test.js\"",
     "watch": "webpack --progress --colors --watch"
-  },
-  "tap": {
-    "check-coverage": false
   },
   "dependencies": {
     "@babel/runtime": "7.21.0",
@@ -37,15 +32,12 @@
     "@babel/plugin-transform-runtime": "7.21.0",
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.14.8",
-    "@types/jest": "29.5.1",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.0.6",
     "eslint": "8.55.0",
     "eslint-config-scratch": "9.0.3",
-    "eslint-plugin-jest": "27.2.1",
     "eslint-plugin-react": "7.33.2",
     "file-loader": "4.1.0",
-    "jest": "29.5.0",
     "json": "^9.0.4",
     "webpack": "4.47.0",
     "webpack-cli": "3.1.2"
